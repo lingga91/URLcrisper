@@ -22,7 +22,7 @@ else if(isset($_POST['url'])){
         if($result=='invalid'){
             echo json_encode(array('status'=>'invalid','url'=>''));
         }else{
-            $level = dirname($_SERVER['PHP_SELF']) == '/'?'':dirname($_SERVER['PHP_SELF']);
+            $level = dirname($_SERVER['PHP_SELF']) == '/'?'':dirname($_SERVER['PHP_SELF']); // to include the parent directory
             $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$level."/{$result}";
             echo json_encode(array('status'=>'success','url'=>$actual_link));
         }
