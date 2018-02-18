@@ -1,0 +1,22 @@
+html,body {
+	height: 100%;
+}
+
+body {
+	background-image: url('../images/bg.png');
+}
+ 
+
+#maincontent{
+    padding : 100px
+}
+
+.hightext{
+color: #fff;
+text-align: center;
+}
+
+.error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; } 
+

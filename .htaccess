@@ -1,0 +1,3 @@
+DirectoryIndex index.php index.html 
+RewriteEngine On 
+RewriteRule ^([a-z0-9]+)$ index.php?code=$1 
