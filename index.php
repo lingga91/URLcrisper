@@ -9,7 +9,7 @@ if (isset($_GET['code'])) {
         header("Location:{$url}");
         exit();
     }
-    else{
+    else{ 
         header('Location:./pg404.html');
     }
      
@@ -17,18 +17,20 @@ if (isset($_GET['code'])) {
 else if(isset($_POST['url'])){
     
      $url  = trim($_POST['url']);
-     $result = $crisper->AddUrl($url);
-     
-     /**/
-     if($result=='invalid'){
-        echo json_encode(array('status'=>'invalid','url'=>''));
+     $result = $crisper->AddUrl($url);  
+     if($result){
+        if($result=='invalid'){
+            echo json_encode(array('status'=>'invalid','url'=>''));
+        }else{
+            $level = dirname($_SERVER['PHP_SELF']) == '/'?'':dirname($_SERVER['PHP_SELF']);
+            $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$level."/{$result}";
+            echo json_encode(array('status'=>'success','url'=>$actual_link));
+        }
      }
      else{
-        $level = dirname($_SERVER['PHP_SELF']) == '/'?'':dirname($_SERVER['PHP_SELF']); //to check the parent directory
-        $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]".$level."/{$result}";
-        echo json_encode(array('status'=>'success','url'=>$actual_link));
+            echo json_encode(array('status'=>'failed','url'=>''));
      }
-     return; 
+     return;   
 }
 else {
     header('Location:./index.html');

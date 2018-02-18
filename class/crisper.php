@@ -58,8 +58,13 @@ class crisper{
                       "URL" => $url
                       );
             array_push($this->urlRecords,$link);               
-            file_put_contents($this->dir,serialize($this->urlRecords)); 
-            return $this->code ;   
+            file_put_contents($this->dir,serialize($this->urlRecords));
+            if(file_exists($this->dir)){
+                return $this->code ; 
+            }
+            else{
+                return false;
+            }   
         }
     }
 }   
