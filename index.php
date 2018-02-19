@@ -3,7 +3,7 @@ require_once('./class/crisper.php');
 error_reporting(0);
 $crisper = new crisper;
 if (isset($_GET['code'])) {
-    $code = $_GET['code'];
+    $code = trim($_GET['code']);
     $url = $crisper->GetUrl($code);
     if($url){
         header("Location:{$url}");
