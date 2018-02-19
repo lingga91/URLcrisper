@@ -28,7 +28,7 @@ $(function() {
             dataType: "json",
             data: {url:url},
             success: function(result){
-                console.log(result);
+                //console.log(result);
                 if(result.status.trim() == 'invalid'){ 
                    $.confirm({
                         title: 'Invalid URL!',
