@@ -7,7 +7,7 @@ class crisper{
     
     public function __construct(){
         
-        //initialize the directory,get the existing records and make code for the next URL
+        //initialize the file directory,get the existing records from the file and make a unique code for the next URL
         
         $this->dir = "./temp/data.txt";  
         if(filesize($this->dir)>0){
@@ -25,7 +25,7 @@ class crisper{
 
     public function GetUrl($code){
     
-      //find the matches for the user input code from the existing data, return the URL if exist
+      //compare the user input code with the existing data to find any matches, return the URL if the code already exist
       foreach ($this->urlRecords as $value) {
            
             if($value['code'] == $code){
@@ -37,7 +37,7 @@ class crisper{
     }
     
     private function CheckURLExist($url){
-        //find the matches for the user input URL from the existing data, return the code if exist
+        //find the matches for the user input URL from the existing data, return the code if URL already exist
         foreach ($this->urlRecords as $value) {
            
             if($value['URL'] == $url){
@@ -49,7 +49,7 @@ class crisper{
     
     public function AddUrl($url){
     
-        //validate the URL & save the URL if it valid
+        //validate the URL 
         if (!filter_var($url, FILTER_VALIDATE_URL)) {
             return 'invalid';
         } 
@@ -64,9 +64,9 @@ class crisper{
                       "URL" => $url
                       );
             array_push($this->urlRecords,$link);               
-            file_put_contents($this->dir,serialize($this->urlRecords));
+            file_put_contents($this->dir,serialize($this->urlRecords)); //save the new validated URL
             
-            //to check the file exist / data exist
+            //to check the file exist / data exist 
             if(file_exists($this->dir)){
                 return $this->code ; 
             }
