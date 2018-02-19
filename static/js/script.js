@@ -29,7 +29,7 @@ $(function() {
             data: {url:url},
             success: function(result){
                 console.log(result);
-                if(result.status == 'invalid'){ 
+                if(result.status.trim() == 'invalid'){ 
                    $.confirm({
                         title: 'Invalid URL!',
                         content: 'Please enter a valid URL',
@@ -45,7 +45,7 @@ $(function() {
                         }
                     });
                 }
-                else if(result.status == 'success'){
+                else if(result.status.trim() == 'success'){
                     
                     $.confirm({
                         title: 'Your new crispy URL',
