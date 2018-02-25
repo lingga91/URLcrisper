@@ -2,9 +2,6 @@ DirectoryIndex index.php index.html
 
 RewriteEngine On 
 
-RewriteCond %{THE_REQUEST} (\s|%20)
-RewriteRule ^(.*/|)[\s%20]+(.+)$ index.php?code=$2 [L] 
-  
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([\w\s.-]+)/?$ index.php?code=$1 [QSA,L] 
