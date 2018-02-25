@@ -1,7 +1,10 @@
 DirectoryIndex index.php index.html 
+
 RewriteEngine On 
-#RewriteRule ^([a-z0-9]+)$ index.php?code=$1 
+
 RewriteCond %{REQUEST_FILENAME} !-d
-# If the request is not for a valid file
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([\w.-]+)/?$ index.php?code=$1 [QSA,L] 
+
+#RewriteCond %{THE_REQUEST} (\s|%20)
+RewriteRule ^(.*/|)[\s%20]+(.+)$ index.php?code=$2 [L] 
