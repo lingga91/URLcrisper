@@ -7,5 +7,5 @@ RewriteRule ^(.*/|)[\s%20]+(.+)$ index.php?code=$2 [L]
   
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([\w.-]+)/?$ index.php?code=$1 [QSA,L] 
+RewriteRule ^([\w\s.-]+)/?$ index.php?code=$1 [QSA,L] 
 
